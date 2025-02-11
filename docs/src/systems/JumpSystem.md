@@ -8,14 +8,15 @@ JumpSystem
 
 ## Composition and Accessor Functions
 
-- `get_eqs(sys)` or `equations(sys)`: The equations that define the jump system.
-- `get_states(sys)` or `states(sys)`: The set of states in the jump system.
-- `get_ps(sys)` or `parameters(sys)`: The parameters of the jump system.
-- `get_iv(sys)`: The independent variable of the jump system.
+  - `get_eqs(sys)` or `equations(sys)`: The equations that define the jump system.
+  - `get_unknowns(sys)` or `unknowns(sys)`: The set of unknowns in the jump system.
+  - `get_ps(sys)` or `parameters(sys)`: The parameters of the jump system.
+  - `get_iv(sys)`: The independent variable of the jump system.
+  - `discrete_events(sys)`: The set of discrete events in the jump system.
 
 ## Transformations
 
-```@docs
+```@docs; canonical=false
 structural_simplify
 ```
 
@@ -23,7 +24,10 @@ structural_simplify
 
 ## Problem Constructors
 
+```@docs; canonical=false
+DiscreteProblem(sys::JumpSystem, u0map, tspan)
+```
+
 ```@docs
-DiscreteProblem
-JumpProblem
+JumpProblem(sys::JumpSystem, prob, aggregator)
 ```

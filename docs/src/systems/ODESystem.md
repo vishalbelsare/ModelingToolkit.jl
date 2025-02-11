@@ -8,10 +8,21 @@ ODESystem
 
 ## Composition and Accessor Functions
 
-- `get_eqs(sys)` or `equations(sys)`: The equations that define the ODE.
-- `get_states(sys)` or `states(sys)`: The set of states in the ODE.
-- `get_ps(sys)` or `parameters(sys)`: The parameters of the ODE.
-- `get_iv(sys)`: The independent variable of the ODE.
+  - `get_eqs(sys)` or `equations(sys)`: The equations that define the ODE.
+  - `get_unknowns(sys)` or `unknowns(sys)`: The set of unknowns in the ODE.
+  - `get_ps(sys)` or `parameters(sys)`: The parameters of the ODE.
+  - `get_iv(sys)`: The independent variable of the ODE.
+  - `get_u0_p(sys, u0map, parammap)` Numeric arrays for the initial condition and parameters given `var => value` maps.
+  - `continuous_events(sys)`: The set of continuous events in the ODE.
+  - `discrete_events(sys)`: The set of discrete events in the ODE.
+  - `alg_equations(sys)`: The algebraic equations (i.e. that does not contain a differential) that defines the ODE.
+  - `get_alg_eqs(sys)`: The algebraic equations (i.e. that does not contain a differential) that defines the ODE. Only returns equations of the current-level system.
+  - `diff_equations(sys)`: The differential equations (i.e. that contain a differential) that defines the ODE.
+  - `get_diff_eqs(sys)`: The differential equations (i.e. that contain a differential) that defines the ODE. Only returns equations of the current-level system.
+  - `has_alg_equations(sys)`: Returns `true` if the ODE contains any algebraic equations (i.e. that does not contain a differential).
+  - `has_alg_eqs(sys)`: Returns `true` if the ODE contains any algebraic equations (i.e. that does not contain a differential). Only considers the current-level system.
+  - `has_diff_equations(sys)`: Returns `true` if the ODE contains any differential equations (i.e. that does contain a differential).
+  - `has_diff_eqs(sys)`: Returns `true` if the ODE contains any differential equations (i.e. that does contain a differential). Only considers the current-level system.
 
 ## Transformations
 
@@ -34,7 +45,7 @@ ModelingToolkit.isaffine
 
 ## Applicable Calculation and Generation Functions
 
-```julia
+```@docs; canonical=false
 calculate_jacobian
 calculate_tgrad
 calculate_factorized_W
@@ -47,14 +58,15 @@ jacobian_sparsity
 ## Standard Problem Constructors
 
 ```@docs
-ODEFunction
-ODEProblem
-SteadyStateFunction
-SteadyStateProblem
+ODEFunction(sys::ModelingToolkit.AbstractODESystem, args...)
+ODEProblem(sys::ModelingToolkit.AbstractODESystem, args...)
+SteadyStateProblem(sys::ModelingToolkit.AbstractODESystem, args...)
 ```
 
-## Torn Problem Constructors
+## Expression Constructors
 
 ```@docs
-ODAEProblem
+ODEFunctionExpr
+DAEFunctionExpr
+SteadyStateProblemExpr
 ```

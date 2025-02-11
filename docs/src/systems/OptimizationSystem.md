@@ -8,9 +8,10 @@ OptimizationSystem
 
 ## Composition and Accessor Functions
 
-- `get_eqs(sys)` or `equations(sys)`: The equation to be minimized.
-- `get_states(sys)` or `states(sys)`: The set of states for the optimization.
-- `get_ps(sys)` or `parameters(sys)`: The parameters for the optimization.
+  - `get_op(sys)`: The objective to be minimized.
+  - `get_unknowns(sys)` or `unknowns(sys)`: The set of unknowns for the optimization.
+  - `get_ps(sys)` or `parameters(sys)`: The parameters for the optimization.
+  - `get_constraints(sys)` or `constraints(sys)`: The constraints for the optimization.
 
 ## Transformations
 
@@ -29,5 +30,11 @@ hessian_sparsity
 ## Problem Constructors
 
 ```@docs
-OptimizationProblem
+OptimizationProblem(sys::ModelingToolkit.OptimizationSystem, args...)
+```
+
+## Expression Constructors
+
+```@docs
+OptimizationProblemExpr
 ```
